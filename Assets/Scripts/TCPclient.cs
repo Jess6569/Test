@@ -55,12 +55,6 @@ public class TCPclient : MonoBehaviour
 				byte[] data = new Byte[256];
 				int bytes = m_stream.Read (data, 0, 256);
 				Messenger<string>.Broadcast ("UpdateServerDataReceived", System.Text.Encoding.ASCII.GetString (data, 0, bytes));
-				m_stream.Dispose();
-				m_stream.Close();
-				m_tcpclnt.Close();
-				m_tcpclnt = new TcpClient();
-				m_tcpclnt.Connect(m_ip,9999);
-				m_stream = m_tcpclnt.GetStream();
 			}
 		}
 		catch (Exception e) 
